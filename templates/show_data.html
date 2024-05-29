@@ -1,0 +1,24 @@
+<!-- templates/show_data.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie & Session Demo by GitHub/kvnbbg (Kevin MARVILLE)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Random Data Generated</h1>
+    <p>User ID from session: {{ user_id }}</p>
+    <a href="{{ url_for('clear_session') }}">Clear Session</a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

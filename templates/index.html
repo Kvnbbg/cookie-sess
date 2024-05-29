@@ -1,0 +1,26 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie & Session Demo by GitHub/kvnbbg (Kevin MARVILLE)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Generate Random Data</h1>
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        {{ form.submit() }}
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
