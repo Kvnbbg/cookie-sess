@@ -1,6 +1,3 @@
-# Title: Cookie & Session Difference by GitHub/kvnbbg (Kevin MARVILLE)
-
-# app.py
 from flask import Flask, render_template, session, redirect, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
@@ -11,7 +8,7 @@ from threading import Timer
 
 # Initialize the Flask application
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.environ.get('SECRET_KEY', 'dev')
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -87,4 +84,4 @@ def clear_session():
 
 if __name__ == '__main__':
     logger.info('Starting the Flask application.')
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
